@@ -25,29 +25,13 @@ class CommentBox extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        let self = this;
-
         if (!nextProps.channel || nextProps === this.props) {
             return false;
-        }
-
-        if (this.props.channel !== nextProps.channel && evtSource) {
-            evtSource.close();
         }
 
         this.setState({
             comments: []
         });
-
-        evtSource = new EventSource( reactiveUrl +'subject-comment/all/' + nextProps.channel);
-
-        evtSource.onmessage = function(e) {
-            let newComments = self.state.comments;
-            newComments.unshift(JSON.parse(e.data));
-            self.setState({
-                comments: newComments
-            })
-        }
     }
 
     changeName(e){
@@ -63,9 +47,11 @@ class CommentBox extends React.Component {
     }
 
     sendComment(){
-        let url = reactiveUrl + 'subject-comment/add-new/';
-        url += this.props.channel + "/" + this.state.name + "/" + this.state.comment;
-        axios.get(url);
+        let newComments = self.state.comments;
+        newComments.unshift({text:this.state.comment, author:this.state.name});
+        this.setState({
+            comments: newComments
+        })
     }
 
     render(){
