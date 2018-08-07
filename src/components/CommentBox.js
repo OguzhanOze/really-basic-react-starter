@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 
 const style = {
     container: {
@@ -13,10 +12,6 @@ const style = {
         color: 'SkyBlue'
     }
 }
-
-const reactiveUrl = 'http://'+ window.location.hostname +':8080/';
-
-let evtSource;
 
 class CommentBox extends React.Component {
 
@@ -47,7 +42,7 @@ class CommentBox extends React.Component {
     }
 
     sendComment(){
-        let newComments = self.state.comments;
+        let newComments = this.state.comments;
         newComments.unshift({text:this.state.comment, author:this.state.name});
         this.setState({
             comments: newComments
