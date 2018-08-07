@@ -14,7 +14,7 @@ const style = {
     }
 }
 
-const reactiveUrl = 'http://'+ window.location.hostname +':8080/';
+const reactiveUrl = "http://"+ window.location.hostname +":8080/";
 
 let evtSource;
 
