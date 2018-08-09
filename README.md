@@ -20,7 +20,7 @@ npm start
 
 If you want to work with a [reactive-spring-demo](https://github.com/gunayus/reactive-spring-demo); 
 
-1. Change branch to ##### stream-event
+1. Change branch to "stream-event"
 2. Clone [reactive-spring-demo](https://github.com/gunayus/reactive-spring-demo) and run it. 
 3. Run really-basic-react-starter.
 
